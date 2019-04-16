@@ -1,0 +1,28 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="citizens">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="citizen">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="name"/>
+                            <xs:element type="xs:string" name="surname"/>
+                            <xs:element type="xs:string" name="patronymic"/>
+                            <xs:element type="xs:dateTime" name="birthday"/>
+                            <xs:element type="xs:string" name="passportSerial"/>
+                            <xs:element type="xs:string" name="currentCityLocation"/>
+                            <xs:element type="xs:string" name="currentAddress"/>
+                            <xs:element type="xs:long" name="mobileNumber"/>
+                            <xs:element type="xs:string" name="email"/>
+                            <xs:element type="xs:string" name="hasJob"/>
+                            <xs:element type="xs:string" name="position"/>
+                            <xs:element type="xs:string" name="registrationAddress"/>
+                            <xs:element type="xs:string" name="citizenship"/>
+                        </xs:sequence>
+                        <xs:attribute type="xs:byte" name="id"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
