@@ -15,6 +15,7 @@ import java.util.Scanner;
 
 Необходимо:
     Решить задачу МЕТОДАМИ ДИНАМИЧЕСКОГО ПРОГРАММИРОВАНИЯ
+
     Итерационно вычислить расстояние редактирования двух данных непустых строк
 
     Sample Input 1:
@@ -50,6 +51,7 @@ public class B_EditDist {
 
 
     public static void main(String[] args) throws FileNotFoundException {
+
         String root = System.getProperty("user.dir") + "/src/";
         InputStream stream = new FileInputStream(root + "by/it/group673602/pelevanyuk/lesson07/dataABC.txt");
         B_EditDist instance = new B_EditDist();
@@ -58,36 +60,18 @@ public class B_EditDist {
         System.out.println(instance.getDistanceEdinting(scanner.nextLine(),scanner.nextLine()));
         System.out.println(instance.getDistanceEdinting(scanner.nextLine(),scanner.nextLine()));
     }
+
     public static int levenstain(String str1, String str2) {
-        int[] Di_1 = new int[str2.length() + 1];
-        int[] Di = new int[str2.length() + 1];
 
-        for (int j = 0; j <= str2.length(); j = j + 1) {
-            Di[j] = j; // (i == 0)
+        if(str1.isEmpty() || str2.isEmpty()){
+            return str1.length() + str2.length();
         }
 
-        int i = 1;
+        int insert = levenstain(str1,str2.substring(1)) + 1;
+        int delete = levenstain(str1.substring(1),str2) + 1;
+        int match = levenstain(str1.substring(1),str2.substring(1)) + (str1.charAt(0) == str2.charAt(0) ? 0 : 1);
 
-        for (; i <= str1.length(); i = i + 1) {
-            System.arraycopy(Di, 0, Di_1, 0, Di_1.length);
-
-            Di[0] = i; // (j == 0)
-
-            int j = 1;
-
-            for (; j <= str2.length(); j = j + 1) {
-
-                int cost = (str1.charAt(i - 1) != str2.charAt(j - 1)) ? 1 : 0;
-
-                Di[j] = min(
-                    Di_1[j] + 1,
-                    Di[j - 1] + 1,
-                    Di_1[j - 1] + cost
-                );
-            }
-        }
-
-        return Di[Di.length - 1];
+        return min(insert,delete,match);
     }
 
     private static int min(int n1, int n2, int n3) {
