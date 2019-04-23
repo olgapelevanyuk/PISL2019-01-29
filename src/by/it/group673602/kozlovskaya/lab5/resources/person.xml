@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persons>
+    <person>
+        <lastName>Козловская</lastName>
+        <firstName>Вероника</firstName>
+        <thirdName>Александровна</thirdName>
+        <gender>Женский</gender>
+        <birthDate>1999-05-05</birthDate>
+        <address>
+            <actualCity>Минск</actualCity>
+            <actualAddress>ул. Я. Колоса 28</actualAddress>
+            <releaseCity>Гомель</releaseCity>
+            <releaseAddress>ул. Гомельская 2</releaseAddress>
+        </address>
+        <passport>
+            <seria>HB</seria>
+            <number>2321233</number>
+            <idNumber>sd23fs23fd2323232</idNumber>
+        </passport>
+        <nation>Беларус</nation>
+        <phone>+375292321866</phone>
+        <homePhone>80292321866</homePhone>
+    </person>
+</persons>
