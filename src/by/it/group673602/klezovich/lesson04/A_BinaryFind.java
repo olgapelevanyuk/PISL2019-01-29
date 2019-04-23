@@ -52,7 +52,6 @@ public class A_BinaryFind {
 
             while (left <= right) {
                 int mid = (left + right) / 2;
-
                 if (value == a[mid]) {
                     searchIndex = mid + 1;
                     break;
