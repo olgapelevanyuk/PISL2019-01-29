@@ -3,9 +3,7 @@ package by.it.group673602.pelevanyuk.lesson09;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 /*
 Задача на программирование: рюкзак без повторов
@@ -54,21 +52,33 @@ public class B_Knapsack {
         int res=instance.getMaxWeight(stream);
         System.out.println(res);
     }
-    int knaonsackSat(int []gold,int weight){
-        ArrayList<Integer> resultList = new ArrayList<>();
-        resultList.add(0);
-        for (int i = 0; i < gold.length; i = i + 1) {
-            ArrayList<Integer> newVariable =  new ArrayList<>();
-            for (int j = 0; j < resultList.size(); j = j + 1) {
-                int newTmp =  gold[i]+resultList.get(j);
-                if(newTmp <= weight && !resultList.contains(newTmp)){
-                    newVariable.add(newTmp);
+    int knaonsackSat(int[] ingotsWeights,int knapsackCapacity){
+
+        ArrayList<Integer> combinationsOfWeights = new ArrayList<>();
+
+        combinationsOfWeights.add(0);
+
+        int countOfIngots = ingotsWeights.length;
+
+        for (int i = 0; i < countOfIngots; i++) {
+
+            ArrayList<Integer> capacityCombsWithCurrentIngot =  new ArrayList<>();
+
+            for (int j = 0; j < combinationsOfWeights.size(); j++) {
+
+                int currentCapacityCombination = ingotsWeights[i] + combinationsOfWeights.get(j);
+
+                if(currentCapacityCombination <= knapsackCapacity &&
+                        !combinationsOfWeights.contains(currentCapacityCombination)){
+                    capacityCombsWithCurrentIngot.add(currentCapacityCombination);
                 }
             }
 
-            resultList.addAll(newVariable);
+            combinationsOfWeights.addAll(capacityCombsWithCurrentIngot);
         }
-        return  Collections.max(resultList);
+
+        return  Collections.max(combinationsOfWeights);
     }
+
 }
 

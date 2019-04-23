@@ -3,10 +3,7 @@ package by.it.group673602.pelevanyuk.lesson09;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /*
 Задача на программирование: рюкзак с повторами
@@ -41,9 +38,13 @@ public class A_Knapsack {
     int getMaxWeight(InputStream stream ) {
         //!!!!!!!!!!!!!!!!!!!!!!!!!     НАЧАЛО ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
         Scanner scanner = new Scanner(stream);
+
         int w=scanner.nextInt();
+
         int n=scanner.nextInt();
+
         int gold[]=new int[n];
+
         for (int i = 0; i < n; i = i + 1) {
             gold[i]=scanner.nextInt();
         }
@@ -56,30 +57,32 @@ public class A_Knapsack {
 
     public static void main(String[] args) throws FileNotFoundException {
         String root = System.getProperty("user.dir") + "/src/";
-        InputStream stream = new FileInputStream(root + "by/it/group673602/pelevanyuk//lesson09/dataA.txt");
+        InputStream stream = new FileInputStream(root + "by/it/group673602/pelevanyuk/lesson09/dataA.txt");
         A_Knapsack instance = new A_Knapsack();
         int res=instance.getMaxWeight(stream);
     }
 
-    private int knapsackWithRepsBU(int w, int n, int[] gold) {
-        int[] resultArray = new int[w];
 
-        for(int i = 0; i < w; i = i + 1)
-        {
-            for(int j = 0; j < gold.length; j = j + 1)
-            {
-                if (gold[j] <= i)
-                {
-                    while (resultArray[i] < i)
-                    {
-                        resultArray[i] = Math.max(resultArray[i], resultArray[i] + gold[j]);
-                    }
+    private int knapsackWithRepsBU(int knapsackCapacity, int distinctCountOfIngots, int[] goldIngotsWeights) {
+
+        Arrays.sort(goldIngotsWeights);
+
+        int resultWeight = 0;
+
+        for(int currentIngotIndex = distinctCountOfIngots - 1; currentIngotIndex >= 0; currentIngotIndex--){
+
+            if(goldIngotsWeights[currentIngotIndex] <= knapsackCapacity) {
+
+                while (knapsackCapacity > goldIngotsWeights[currentIngotIndex]) {
+                    resultWeight += goldIngotsWeights[currentIngotIndex];
+                    knapsackCapacity -= goldIngotsWeights[currentIngotIndex];
                 }
             }
         }
 
-        return resultArray[w-1];
+        return resultWeight;
     }
+
 
 }
 
