@@ -38,21 +38,37 @@ import java.util.Scanner;
 */
 
 public class A_EditDist {
-
+    private  char[] First;
+    private  char[] Second;
 
     int getDistanceEdinting(String one, String two) {
-        //!!!!!!!!!!!!!!!!!!!!!!!!!     НАЧАЛО ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
+        First = one.toCharArray();
+        Second = two.toCharArray();
+        return editDistTD(First.length, Second.length);
+    }
 
-
-        int result = 0;
-        //!!!!!!!!!!!!!!!!!!!!!!!!!     КОНЕЦ ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
-        return result;
+    private int editDistTD(int i, int j){
+        if(i == 0 && j == 0){
+            return 0;
+        }
+        if( i == 0){
+            return j;
+        }
+        else if(j == 0){
+            return i;
+        }
+        if(First[i-1] == Second[j-1]){
+            return editDistTD(i-1, j-1);
+        }
+        else{
+            return Math.min(editDistTD(i - 1, j), Math.min(editDistTD(i, j - 1), editDistTD(i - 1, j - 1))) + 1;
+        }
     }
 
 
     public static void main(String[] args) throws FileNotFoundException {
         String root = System.getProperty("user.dir") + "/src/";
-        InputStream stream = new FileInputStream(root + "by/it/a_khmelev/lesson07/dataABC.txt");
+        InputStream stream = new FileInputStream(root + "by/it/group673602/zakharevich/lesson07/dataABC.txt");
         A_EditDist instance = new A_EditDist();
         Scanner scanner = new Scanner(stream);
         System.out.println(instance.getDistanceEdinting(scanner.nextLine(),scanner.nextLine()));
