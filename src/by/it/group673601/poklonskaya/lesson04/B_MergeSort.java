@@ -1,4 +1,4 @@
-package by.it.group673601.filipovets.lesson04;
+package by.it.group673601.poklonskaya.lesson04;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -86,7 +86,7 @@ public class B_MergeSort {
     }
     public static void main(String[] args) throws FileNotFoundException {
         String root = System.getProperty("user.dir") + "/src/";
-        InputStream stream = new FileInputStream(root + "by/it/group673601/filipovets/lesson04/dataB.txt");
+        InputStream stream = new FileInputStream(root + "by/it/group673601/poklonskaya/lesson04/dataB.txt");
         B_MergeSort instance = new B_MergeSort();
         //long startTime = System.currentTimeMillis();
         int[] result=instance.getMergeSort(stream);
