@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<citizens>
+    <citizen id="1">
+        <name>name</name>
+        <surname>surname</surname>
+        <patronymic>patronymic</patronymic>
+        <birthday>2019-04-16T13:14:41.763+03:00</birthday>
+        <passportSerial>passport serial</passportSerial>
+        <currentCityLocation>MINSK</currentCityLocation>
+        <currentAddress>address</currentAddress>
+        <mobileNumber>+37533432434</mobileNumber>
+        <email>email</email>
+        <hasJob>true</hasJob>
+        <position>position</position>
+        <registrationAddress>reg address</registrationAddress>
+        <citizenship>BELARUS</citizenship>
+    </citizen>
+</citizens>

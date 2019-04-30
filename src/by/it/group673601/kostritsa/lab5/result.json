@@ -1,0 +1,20 @@
+{
+  "list": [
+    {
+      "id": "1",
+      "name": "name",
+      "surname": "surname",
+      "patronymic": "patronymic",
+      "birthday": 1555409681763,
+      "passportSerial": "passport serial",
+      "currentCityLocation": "MINSK",
+      "currentAddress": "address",
+      "mobileNumber": "+37533432434",
+      "email": "new email",
+      "hasJob": true,
+      "position": "position",
+      "registrationAddress": "reg address",
+      "citizenship": "BELARUS"
+    }
+  ]
+}

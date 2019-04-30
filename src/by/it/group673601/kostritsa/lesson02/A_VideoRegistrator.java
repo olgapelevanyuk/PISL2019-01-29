@@ -3,6 +3,7 @@ package by.it.group673601.kostritsa.lesson02;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 /*
 даны события events
 реализуйте метод calcStartTimes, так, чтобы число включений регистратора на
