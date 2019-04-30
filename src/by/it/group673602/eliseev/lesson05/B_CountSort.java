@@ -19,8 +19,8 @@ public class B_CountSort {
 
 
     int[] countSort(InputStream stream) throws FileNotFoundException {
-        //подготовка к чтению данных
-        Scanner scanner = new Scanner(stream);
+            //подготовка к чтению данных
+            Scanner scanner = new Scanner(stream);
         //!!!!!!!!!!!!!!!!!!!!!!!!!     НАЧАЛО ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
         //размер массива
         int n = scanner.nextInt();
