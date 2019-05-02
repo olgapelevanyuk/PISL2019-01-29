@@ -100,7 +100,7 @@ public class A_QSort {
         if (l < right)
             qSort(mas, l, right);
         if (r > left)
-            qSort(mas, left, r);
+            qSort(mas, left, r - 1);
 
     }
 
