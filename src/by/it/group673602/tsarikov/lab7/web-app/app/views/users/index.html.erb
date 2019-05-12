@@ -1,0 +1,8 @@
+<h1>List of all users</h1>
+<% @users.each do |user| %>
+  <div class="alert alert-light">
+    <h5>User:  <%= user.name %> <%= user.surname %></h5>
+    <p><%= link_to "View information", user_path(user), :class => 'btn btn-outline-primary' %></p>
+  </div>
+  <hr>
+<% end %>
