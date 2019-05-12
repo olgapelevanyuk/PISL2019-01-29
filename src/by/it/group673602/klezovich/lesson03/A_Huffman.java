@@ -136,6 +136,7 @@ public class A_Huffman {
         //3. вынимая по два узла из очереди (для сборки родителя)
         //и возвращая этого родителя обратно в очередь
         //построим дерево кодирования Хаффмана.
+
         //У родителя частоты детей складываются.
 
         while (priorityQueue.size() != 1) {
@@ -143,7 +144,6 @@ public class A_Huffman {
             Node leafTwo = priorityQueue.poll();
             priorityQueue.add(new InternalNode(leafOne, leafTwo));
         }
-
         //4. последний из родителей будет корнем этого дерева
         //это будет последний и единственный элемент оставшийся в очереди priorityQueue.
         StringBuilder sb = new StringBuilder();

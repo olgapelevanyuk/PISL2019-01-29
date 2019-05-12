@@ -60,19 +60,49 @@ public class C_EditDist {
 
         String[] operations = comeBack(mas, one, two);
 
+
         String result = reverse(operations);
 
         //!!!!!!!!!!!!!!!!!!!!!!!!!     КОНЕЦ ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
         return result;
     }
 
-    private String reverse(String[] operations){
-        StringBuilder buf = new StringBuilder();
-        for (int i = operations.length - 1; i >= 0; i--){
-            buf.append(operations[i]);
-            buf.append(",");
+    private void initialFill(int[][] mas){
+        for(int[] e : mas){
+            Arrays.fill(e, 0);
         }
-        return buf.toString();
+        for (int i =1; i < mas[0].length; i++){
+            mas[0][i] = i;
+        }
+        for (int i =0; i < mas.length;i++){
+            mas[i][0] = i;
+        }
+    }
+
+    private void populateMas(int[][] mas, String one, String two) {
+        for (int i = 1; i < mas.length; i++){
+            for (int j = 1; j < mas[i].length; j++){
+                mas[i][j] = check(one.charAt(i-1), two.charAt(j-1),mas, i, j);
+            }
+        }
+    }
+
+    private int check(char one, char two, int[][] mas, int i, int j){
+        int min;
+        if (mas[i-1][j] < mas[i][j-1]){
+            min = mas[i-1][j] + 1;
+        }
+        else min = mas[i][j-1] + 1;
+
+        if (one != two){
+            if (min > mas[i-1][j-1] + 1){
+                min = mas[i-1][j-1] + 1;
+            }
+        }
+        else if (min > mas[i-1][j-1]){
+            min = mas[i-1][j-1];
+        }
+        return min;
     }
 
     private String[] comeBack(int[][] mas, String one, String two){
@@ -109,44 +139,14 @@ public class C_EditDist {
         return buf.toString().split(",");
     }
 
-    private void populateMas(int[][] mas, String one, String two) {
-        for (int i = 1; i < mas.length; i++){
-            for (int j = 1; j < mas[i].length; j++){
-                mas[i][j] = check(one.charAt(i-1), two.charAt(j-1),mas, i, j);
-            }
+    private String reverse(String[] operations){
+        StringBuilder buf = new StringBuilder();
+        for (int i = operations.length - 1; i >= 0; i--){
+            buf.append(operations[i]);
+            buf.append(",");
         }
+        return buf.toString();
     }
-
-    private void initialFill(int[][] mas){
-        for(int[] e : mas){
-            Arrays.fill(e, 0);
-        }
-        for (int i =1; i < mas[0].length; i++){
-            mas[0][i] = i;
-        }
-        for (int i =0; i < mas.length;i++){
-            mas[i][0] = i;
-        }
-    }
-
-    private int check(char one, char two, int[][] mas, int i, int j){
-        int min;
-        if (mas[i-1][j] < mas[i][j-1]){
-            min = mas[i-1][j] + 1;
-        }
-        else min = mas[i][j-1] + 1;
-
-        if (one != two){
-            if (min > mas[i-1][j-1] + 1){
-                min = mas[i-1][j-1] + 1;
-            }
-        }
-        else if (min > mas[i-1][j-1]){
-            min = mas[i-1][j-1];
-        }
-        return min;
-    }
-
 
     public static void main(String[] args) throws FileNotFoundException {
         String root = System.getProperty("user.dir") + "/src/";

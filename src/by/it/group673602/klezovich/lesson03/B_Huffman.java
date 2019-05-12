@@ -65,8 +65,11 @@ public class B_Huffman {
                 }
             }
         }
+
         String elementForEncode = new String();
+
         char[] chars = codeLine.toCharArray();
+
         for (int i = 0; i < chars.length; i++) {
             elementForEncode += chars[i];
             if(code.containsKey(elementForEncode)){

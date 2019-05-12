@@ -38,13 +38,18 @@ import java.util.Scanner;
 public class A_QSort {
 
     //отрезок
-    private class Segment  implements Comparable{
+    private class Segment implements Comparable {
         int start;
         int stop;
 
-        Segment(int start, int stop){
-            this.start = start;
-            this.stop = stop;
+        Segment(int start, int stop) {
+            if (start > stop) {
+                this.start = stop;
+                this.stop = start;
+            } else {
+                this.start = start;
+                this.stop = stop;
+            }
             //тут вообще-то лучше доделать конструктор на случай если
             //концы отрезков придут в обратном порядке
         }
@@ -52,10 +57,49 @@ public class A_QSort {
         @Override
         public int compareTo(Object o) {
             //подумайте, что должен возвращать компаратор отрезков
-            return 0;
+            int tmp = Integer.compare(this.start, ((Segment) o).start);
+            if (tmp != 0) {
+                return tmp;
+            }
+            return Integer.compare(this.stop, ((Segment) o).stop);
         }
     }
 
+    void qSort(Segment[] mas, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        int midInd = (left + right) / 2;
+        Segment mid = mas[midInd];
+        int l = left;
+        int r = right;
+        Segment tmp;
+        while (l <= r) {
+            // сдвигаем левую границу пока элемент [left] меньше [mid]
+            while (mid.compareTo(mas[l]) > 0) {
+                l++;
+            }
+            // сдвигаем правую границу пока элемент [right] больше [mid]
+            while (mid.compareTo(mas[r]) < 0) {
+                r--;
+            }
+            if (l > r) {
+                break;
+            }
+            // ставим разрешающий элемент на место
+            tmp = mas[l];
+            mas[l] = mas[r];
+            mas[r] = tmp;
+            l++;
+            r--;
+        }
+        // Рекурсивно вызываем сортировку для левой и правой части массива
+        if (l < right)
+            qSort(mas, l, right);
+        if (r > left)
+            qSort(mas, left, r);
+
+    }
 
     int[] getAccessory(InputStream stream) throws FileNotFoundException {
         //подготовка к чтению данных
@@ -63,22 +107,25 @@ public class A_QSort {
         //!!!!!!!!!!!!!!!!!!!!!!!!!     НАЧАЛО ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
         //число отрезков отсортированного массива
         int n = scanner.nextInt();
-        Segment[] segments=new Segment[n];
+        Segment[] segments = new Segment[n];
         //число точек
         int m = scanner.nextInt();
-        int[] points=new int[m];
-        int[] result=new int[m];
+        int[] points = new int[m];
+        int[] result = new int[m];
 
         //читаем сами отрезки
         for (int i = 0; i < n; i++) {
             //читаем начало и конец каждого отрезка
-            segments[i]=new Segment(scanner.nextInt(),scanner.nextInt());
+            segments[i] = new Segment(scanner.nextInt(), scanner.nextInt());
         }
+
         //читаем точки
         for (int i = 0; i < m; i++) {
-            points[i]=scanner.nextInt();
+            points[i] = scanner.nextInt();
         }
-        quickSort(segments, 0, segments.length - 1);
+
+        qSort(segments, 0, segments.length - 1);
+
         for (int i = 0; i < points.length; i++) {
             int count = 0;
             for (Segment segment : segments) {
@@ -99,44 +146,14 @@ public class A_QSort {
         return result;
     }
 
-    public void quickSort(Segment arr[], int begin, int end) {
-        if (begin < end) {
-            int partitionIndex = partition(arr, begin, end);
-
-            quickSort(arr, begin, partitionIndex - 1);
-            quickSort(arr, partitionIndex + 1, end);
-        }
-    }
-
-
-    private int partition(Segment arr[], int begin, int end) {
-        Segment pivot = arr[end];
-        int i = (begin - 1);
-
-        for (int j = begin; j < end; j++) {
-            if (pivot.compareTo(arr[j]) >= 0) {
-                i++;
-
-                Segment swapTemp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = swapTemp;
-            }
-        }
-
-        Segment swapTemp = arr[i + 1];
-        arr[i + 1] = arr[end];
-        arr[end] = swapTemp;
-
-        return i + 1;
-    }
 
     public static void main(String[] args) throws FileNotFoundException {
         String root = System.getProperty("user.dir") + "/src/";
         InputStream stream = new FileInputStream(root + "by/it/a_khmelev/lesson05/dataA.txt");
         A_QSort instance = new A_QSort();
-        int[] result=instance.getAccessory(stream);
-        for (int index:result){
-            System.out.print(index+" ");
+        int[] result = instance.getAccessory(stream);
+        for (int index : result) {
+            System.out.print(index + " ");
         }
     }
 

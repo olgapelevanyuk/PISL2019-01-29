@@ -24,7 +24,19 @@ public class A_VideoRegistrator {
     List<Double> calcStartTimes(double[] events, double workDuration){
         List<Double> result;
         result = new ArrayList<>();
-        int i = 0;
+        int i = 0; //i - это индекс события events[i]
+        //комментарии от проверочного решения сохранены для подсказки, но вы можете их удалить.
+        //подготовка к жадному поглощению массива событий
+        //hint: сортировка Arrays.sort обеспечит скорость алгоритма
+        //C*(n log n) + C1*n = O(n log n)
+
+        //пока есть незарегистрированные события
+        //получим одно событие по левому краю
+        //и запомним время старта видеокамеры
+        //вычислим момент окончания работы видеокамеры
+        //и теперь пропустим все покрываемые события
+        //за время до конца работы, увеличивая индекс
+
         Arrays.sort(events);
         double workTime = events[i];
         result.add(workTime);
