@@ -1,0 +1,15 @@
+<p>Full name: <%= @user.surname %>  <%= @user.name %> <%= @user.fathername %></p>
+<p>Birthday: <%= @user.birthday %></p>
+<p>Sex: <%= @user.sex %></p>
+<p>Passport series and id: <%= @user.passport_series %><%= @user.passport_id %></p>
+<p>Identification number: <%= @user.identification_number %></p>
+<p>City: <%= @user.city %></p>
+<p>Address: <%= @user.address %></p>
+<p>Home telephone: <%= @user.home_telephone %></p>
+<p>Mobile telephone: <%= @user.mobile_telephone %></p>
+<p>Email: <%= @user.email %></p>
+<p>Work position: <%= @user.work_position %></p>
+<p>Nationality: <%= @user.nationality %></p>
+<hr>
+<%= link_to "Edit user", edit_user_path(@user), :class => 'btn btn-warning' %>
+<%= link_to "Delete user", user_path(@user), method: :delete, data: {confirm: "Do you want to delete a user?"}, :class => 'btn btn-danger' %>
