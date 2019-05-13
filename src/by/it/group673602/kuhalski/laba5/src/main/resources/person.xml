@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persons>
+    <person>
+        <lastName>Булахов</lastName>
+        <firstName>Антон</firstName>
+        <thirdName>Викторович</thirdName>
+        <birthDate>1998-09-09T00:00:00+03:00</birthDate>
+        <address>
+            <actualCity>Минск</actualCity>
+            <actualAddress>ул. Сухаревская 27</actualAddress>
+        </address>
+        <passport>
+            <series>MP</series>
+            <number>3181855</number>
+        </passport>
+        <nation>Беларус</nation>
+        <reservist>false</reservist>
+    </person>
+    <person>
+        <lastName>Ильяков</lastName>
+        <firstName>Ильяков</firstName>
+        <thirdName>Ильяков</thirdName>
+        <birthDate>0009-09-19T00:00:00+03:00</birthDate>
+        <address>
+            <actualCity>Минск</actualCity>
+            <actualAddress>Фрунзенская</actualAddress>
+        </address>
+        <passport>
+            <series>MP</series>
+            <number>1923123123</number>
+        </passport>
+        <nation>Беларус</nation>
+        <reservist>false</reservist>
+    </person>
+</persons>
