@@ -1,0 +1,12 @@
+{"persons":
+[{"login":1,
+  "lastName":"Булахов",
+  "firstName":"Антон",
+  "thirdName":"Викторович",
+  "passport":{"series":"MP","number":"3181855","idNumber":"13131313131313"},
+  "birthDate":1555491182694,
+  "address":{"actualCity":"MINSK","actualAddress":"ул. Сухаревская 27","releaseCity":"MINSK","releaseAddress":"ул. Сухаревская 27"},
+  "nation":"BELARUS",
+  "reservist": true
+}]
+}

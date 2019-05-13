@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persons>
+    <person>
+        <lastName>Булахов</lastName>
+        <firstName>Антон</firstName>
+        <thirdName>Викторович</thirdName>
+        <birthDate>1998-09-09</birthDate>
+        <address>
+            <actualCity>Минск</actualCity>
+            <actualAddress>ул. Сухаревская 27</actualAddress>
+            <releaseCity>Минск</releaseCity>
+            <releaseAddress>ул. Сухаревская 27</releaseAddress>
+        </address>
+        <passport>
+            <series>MP</series>
+            <number>3181855</number>
+            <idNumber>13131313131313</idNumber>
+        </passport>
+        <nation>Беларус</nation>
+        <reservist>false</reservist>
+    </person>
+</persons>
